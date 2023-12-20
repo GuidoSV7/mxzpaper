@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductExport;
+use App\Exports\ProductReport;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,6 +22,19 @@ class ProductController extends Controller
             'productos' => $productos,
         ]);
 
+    }
+
+    public function showcliente(Product $producto)
+    {
+        return view('productos.showcliente',[
+            'producto' =>$producto
+        ]);
+    }
+
+    public function reserva (Product $producto){
+        return view('productos.reserva',[
+            'producto' =>$producto
+        ]);
     }
 
     /**
@@ -90,7 +104,7 @@ class ProductController extends Controller
         $startDate = $request->input('startDate');
         $endDate = $request->input('endDate');
 
-        return Excel::download(new Product($searchTerm, $startDate, $endDate), 'products.xlsx');
+        return Excel::download(new ProductReport($searchTerm, $startDate, $endDate), 'products.xlsx');
     }
 
 
@@ -103,7 +117,7 @@ class ProductController extends Controller
 
 
 
-        $products = Product::query()
+        $productos = Product::query()
         ->where(function ($query) use ($searchTerm) {
             $query->where('name', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('id', 'LIKE', "%{$searchTerm}%");
@@ -117,7 +131,7 @@ class ProductController extends Controller
         ->get();
 
 
-        $pdf = PDF::loadView('productos.pdf', compact('products'));
+        $pdf = PDF::loadView('productos.pdf', compact('productos'));
 
         return $pdf->download('products.pdf');
     }

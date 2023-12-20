@@ -36,17 +36,19 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Email</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
                     <th>Fecha de Registro</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($productos as $producto)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    <td>{{ $producto->id }}</td>
+                    <td>{{ $producto->name }}</td>
+                    <td>{{ $producto->description }}</td>
+                    <td>{{ $producto->price }}</td>
+                    <td>{{ $producto->created_at }}</td>
                 </tr>
                 @endforeach
             </tbody>

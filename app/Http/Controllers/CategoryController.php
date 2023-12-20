@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CategoryReport;
 use App\Models\Category;
 
 
@@ -96,7 +97,7 @@ class CategoryController extends Controller
         $startDate = $request->input('startDate');
         $endDate = $request->input('endDate');
 
-        return Excel::download(new Category($searchTerm, $startDate, $endDate), 'categories.xlsx');
+        return Excel::download(new CategoryReport($searchTerm, $startDate, $endDate), 'categories.xlsx');
     }
 
 
@@ -109,7 +110,7 @@ class CategoryController extends Controller
 
 
 
-        $products = Category::query()
+        $categorias = Category::query()
         ->where(function ($query) use ($searchTerm) {
             $query->where('name', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('id', 'LIKE', "%{$searchTerm}%");
@@ -123,9 +124,9 @@ class CategoryController extends Controller
         ->get();
 
 
-        $pdf = PDF::loadView('categorias.pdf', compact('products'));
+        $pdf = PDF::loadView('categorias.pdf', compact('categorias'));
 
-        return $pdf->download('products.pdf');
+        return $pdf->download('categorias.pdf');
     }
 
 }

@@ -51,7 +51,7 @@ Route::get('/usuarios/lista', [UserController::class, 'lista'])->middleware(['au
 //Vista usuario
 Route::get('/', [UserController::class, 'index'])->name('usuarios.index');
 Route::get('/{producto}/show', [ProductController::class, 'showcliente'])->name('productoscliente.show');
-Route::get('/{productos}/reserva', [ProductController::class, 'reserva'])->name('productos.reserva');
+Route::get('/{producto}/reserva', [ProductController::class, 'reserva'])->name('productos.reserva');
 
 Route::get('/{habitacion}/show', [HabitacionController::class, 'showcliente'])->name('habitacionescliente.show');
 Route::get('/habitaciones', [HabitacionController::class, 'index'])->name('habitaciones.index.');

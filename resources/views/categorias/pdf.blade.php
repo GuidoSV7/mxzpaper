@@ -36,17 +36,15 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Email</th>
                     <th>Fecha de Registro</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($categorias as $categoria)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    <td>{{ $categoria->id }}</td>
+                    <td>{{ $categoria->name }}</td>
+                    <td>{{ $categoria->created_at }}</td>
                 </tr>
                 @endforeach
             </tbody>
