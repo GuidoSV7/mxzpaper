@@ -48,6 +48,7 @@
         <div class="mt-6">
             @auth
             <a href="{{ route('productos.reserva', ['producto' => $producto->id]) }}" class="bg-orange-500 text-white py-2 px-4 rounded-md">Comprar Producto</a>
+            <a href="{{ route('productos.generarqrvista', ['producto' => $producto->id]) }}" class="bg-orange-500 text-white py-2 px-4 rounded-md">Quiero Comprar por Qr</a>
 
             <a href="https://acortar.link/ZIy90A" target="_blank" class="bg-green-500 text-white py-2 px-4 rounded-md ml-2">
               <i class="fab fa-whatsapp"></i> WhatsApp

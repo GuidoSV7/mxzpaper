@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -91,6 +92,74 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function generarqrvista(Product $producto)
+    {
+        //Datos del Producto
+        $producto = Product::find($producto->id);
+
+
+
+
+        return view('productos.generarqrvista',[
+            'producto' =>$producto
+        ]);
+
+
+    }
+
+    public function generarqr(Request $request)
+    {
+        $lcUrl = "https://serviciostigomoney.pagofacil.com.bo/api/servicio/generarqrv2";
+
+        // Obtén los datos del producto_id
+        $producto = Product::find($request->producto_id);
+
+        $requestData = [
+            'tcCommerceID' => $producto->tcCommerceID,
+            'tnMoneda' => $producto->tnMoneda,
+            'tnTelefono' => $request->tnTelefono,
+            'tcCorreo' => $request->tcCorreo,
+            'tcNombreUsuario' => $request->tcNombreUsuario,
+            'tnCiNit' => $request->tnCiNit,
+            'tcNroPago' => $request->tcNroPago,
+            'tnMontoClienteEmpresa' => $request->tnMontoClienteEmpresa,
+            'tcUrlCallBack' => $request->tcUrlCallBack,
+            'tcUrlReturn' => $request->tcUrlReturn,
+            'taPedidoDetalle' => [
+                [
+                    'Serial' => 345,
+                    'Producto' => $producto->name,
+                    'Cantidad' => 1,
+                    'Precio' => $producto->precio,
+                    'Descuento' => 0,
+                    'Total' => $producto->precio,
+                ],
+            ],
+        ];
+
+        $laHeader = [
+            'Accept' => 'application/json',
+        ];
+
+        try {
+            $laResponse = Http::post($lcUrl, $requestData, $laHeader);
+            $laResult = $laResponse->json();
+
+            $laValues = explode(";", $laResult['values'])[1];
+            $laQrImage = "data:image/png;base64," . json_decode($laValues)->qrImage;
+
+            return view('productos.qrgenerado', ['laQrImage' => $laQrImage]);
+
+        } catch (\Exception $error) {
+            return response()->json([
+                'ok' => false,
+                'msg' => 'Hable con el administrador',
+            ], 500);
+        }
+    }
+
+
 
     public function lista(){
 

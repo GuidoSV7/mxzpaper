@@ -53,6 +53,9 @@ Route::get('/', [UserController::class, 'index'])->name('usuarios.index');
 Route::get('/{producto}/show', [ProductController::class, 'showcliente'])->name('productoscliente.show');
 Route::get('/{producto}/reserva', [ProductController::class, 'reserva'])->name('productos.reserva');
 
+//GenerateQr
+Route::get('/{producto}/generarqr', [ProductController::class, 'generarqrvista'])->name('productos.generarqrvista');
+Route::post('/generarqr', [ProductController::class, 'generarqr'])->name('generar-qr');
 
 
 //Reservas
@@ -68,6 +71,7 @@ Route::get('/productos/{producto}/show', [ProductController::class, 'show'])->na
 Route::get('/productos/{producto}/edit', [ProductController::class, 'edit'])->name('productos.edit');
 Route::get('/productos/lista', [ProductController::class, 'lista'])->name('productos.lista');
 
+
 //Categorias
 Route::get('/categorias/create', [CategoryController::class, 'create'])->name('categorias.create');
 Route::get('/categorias/{categoria}/show', [CategoryController::class, 'show'])->name('categorias.show');
@@ -75,11 +79,8 @@ Route::get('/categorias/{categoria}/edit', [CategoryController::class, 'edit'])-
 Route::get('/categorias/lista', [CategoryController::class, 'lista'])->name('categorias.lista');
 
 
-//GenerateQr
 
 
-//Bitacora
-Route::get('/bitacoras', [BitacoraController::class, 'index'])->name('bitacoras.index');
 
 //Reportes de usuario
 Route::get('/exportar-usuarios-pdf', [UserController::class, 'downloadPDF'])->name('exportar.usuarios.pdf');

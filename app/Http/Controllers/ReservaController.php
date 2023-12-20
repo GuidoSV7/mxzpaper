@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pay;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class ReservaController extends Controller
      */
     public function show(Reserva $reserva)
     {
-       
+
         return view('reservas.show',[
             'reserva' =>$reserva
         ]);
@@ -69,7 +70,7 @@ class ReservaController extends Controller
     }
 
     public function lista(){
-        
+
         return view('reservas.lista');
     }
 
@@ -82,21 +83,18 @@ class ReservaController extends Controller
         $telefono = $request->input('telefono');
         $correo = $request->input('correo');
         $direccion = $request->input('direccion');
-        $habitacion_id = $request->input('habitacion_id');
-    
+
+
         // Guardar los datos en la base de datos
-        $reserva = new Reserva();
-        $reserva->carnet = $carnet;
-        $reserva->nombre = $nombre;
-        $reserva->telefono = $telefono;
-        $reserva->correo = $correo;
-        $reserva->direccion = $direccion;
-        $reserva->user_id = auth()->user()->id; // Obtener el ID del usuario logueado
-        $reserva->habitacion_id = $habitacion_id; // Obtener el ID de la habitación que estás reservando
-        $reserva->estado = "Procesando"; 
+        $pay= new Pay();
+        $pay->title = $nombre;
+        $pay-> description = $carnet;
+        $pay->total = $nombre;
+        $pay->iduser = auth()->user()->id; // Obtener el ID del usuario logueado
+        // $reserva->estado = "Procesando";
         // Guardar la reserva
-        $reserva->save();
-    
+        $pay->save();
+
         // Redirigir a una página de éxito o mostrar un mensaje de confirmación
         return redirect('/')->with('success', 'Se realizó la reserva correctamente');
     }

@@ -16,7 +16,7 @@ class ProductoSeeder extends Seeder
         Product::create([
             'name' => 'Producto1',
             'description' =>'Descripcion del producto',
-            'photoUrl' => 'http:procucto.com',
+            'photourl' => 'http:procucto.com',
             'price' => 50,
          ]);
     }
