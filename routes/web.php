@@ -53,17 +53,6 @@ Route::get('/', [UserController::class, 'index'])->name('usuarios.index');
 Route::get('/{producto}/show', [ProductController::class, 'showcliente'])->name('productoscliente.show');
 Route::get('/{producto}/reserva', [ProductController::class, 'reserva'])->name('productos.reserva');
 
-Route::get('/{habitacion}/show', [HabitacionController::class, 'showcliente'])->name('habitacionescliente.show');
-Route::get('/habitaciones', [HabitacionController::class, 'index'])->name('habitaciones.index.');
-Route::get('/{habitacion}/reserva', [HabitacionController::class, 'reserva'])->name('habitaciones.reserva');
-
-
-//Vista administrador
-Route::get('/habitaciones/create', [HabitacionController::class, 'create'])->name('habitaciones.create');
-Route::get('/habitaciones/{habitacion}/show', [HabitacionController::class, 'show'])->name('habitaciones.show');
-Route::get('/habitaciones/{habitacion}/edit', [HabitacionController::class, 'edit'])->name('habitaciones.edit');
-Route::get('/habitaciones/lista', [HabitacionController::class, 'lista'])->name('habitaciones.lista');
-
 
 
 //Reservas
@@ -86,7 +75,7 @@ Route::get('/categorias/{categoria}/edit', [CategoryController::class, 'edit'])-
 Route::get('/categorias/lista', [CategoryController::class, 'lista'])->name('categorias.lista');
 
 
-
+//GenerateQr
 
 
 //Bitacora
@@ -113,8 +102,3 @@ Route::get('categorias/export/', [CategoryController::class, 'downloadExcel'])->
 //De esta forma nunca funcinó bien el tiempo real
 // Route::get('/exportar-usuarios-pdf/{{$searchTerm }}', [MostrarUsuarios::class,'exportUsersPDF'])->name('exportar.usuarios.pdf');
 
-
-
-//Reportes de la Bitacora
-Route::get('/exportar-bitacoras-pdf', [BitacoraController::class, 'downloadPDF'])->name('exportar.bitacoras.pdf');
-Route::get('bitacoras/export/', [BitacoraController::class, 'downloadExcel'])->name('exportar.bitacoras.xlsx');
