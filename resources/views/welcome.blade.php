@@ -16,6 +16,10 @@
         </style>
     </head>
     <body class="antialiased">
+
+
+
+
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
@@ -119,6 +123,8 @@
                     </div>
                 </div>
 
+                <div id="sfcd6ukc4t2y6un8zjcmlgf46lny8qxju62"></div><script type="text/javascript" src="https://counter7.optistats.ovh/private/counter.js?c=d6ukc4t2y6un8zjcmlgf46lny8qxju62&down=async" async></script><noscript><a href="https://www.contadorvisitasgratis.com" title="contador de visitas gratis"><img src="https://counter7.optistats.ovh/private/contadorvisitasgratis.php?c=d6ukc4t2y6un8zjcmlgf46lny8qxju62" border="0" title="contador de visitas gratis" alt="contador de visitas gratis"></a></noscript>
+
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
                         <div class="flex items-center gap-4">
@@ -130,6 +136,8 @@
                             </a>
                         </div>
                     </div>
+
+
 
                     <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})

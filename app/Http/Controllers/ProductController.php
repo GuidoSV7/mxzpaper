@@ -115,27 +115,20 @@ class ProductController extends Controller
         // Obtén los datos del producto_id
         $producto = Product::find($request->producto_id);
 
+
+
         $requestData = [
-            'tcCommerceID' => $producto->tcCommerceID,
-            'tnMoneda' => $producto->tnMoneda,
-            'tnTelefono' => $request->tnTelefono,
-            'tcCorreo' => $request->tcCorreo,
-            'tcNombreUsuario' => $request->tcNombreUsuario,
-            'tnCiNit' => $request->tnCiNit,
-            'tcNroPago' => $request->tcNroPago,
-            'tnMontoClienteEmpresa' => $request->tnMontoClienteEmpresa,
-            'tcUrlCallBack' => $request->tcUrlCallBack,
-            'tcUrlReturn' => $request->tcUrlReturn,
-            'taPedidoDetalle' => [
-                [
-                    'Serial' => 345,
-                    'Producto' => $producto->name,
-                    'Cantidad' => 1,
-                    'Precio' => $producto->precio,
-                    'Descuento' => 0,
-                    'Total' => $producto->precio,
-                ],
-            ],
+            'tcCommerceID' => "d029fa3a95e174a19934857f535eb9427d967218a36ea014b70ad704bc6c8d1c",
+            'tnMoneda' => 2,
+            'tnTelefono' => "78452415",
+            'tcCorreo' => "josalejandroapp2017@gmail.com",
+            'tcNombreUsuario' => "Jose Alejandro Sahonero Salas",
+            'tnCiNit' => "13210479",
+            'tcNroPago' => "test-1300",
+            'tnMontoClienteEmpresa' => "100",
+            'tcUrlCallBack' => "http://localhost:8000/",
+            'tcUrlReturn' => "http://localhost:8000/",
+
         ];
 
         $laHeader = [
