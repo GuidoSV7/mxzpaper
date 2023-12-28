@@ -114,8 +114,8 @@
                <div class="col-md-12">
                   <div class="text-bg">
                      <div class="padding_lert">
-                        <h1 style="color: white">Bienvenido a nuestra Papeleria </h1>
-                        <p>Aquí encontrarás todo lo que necesitas para tu colegio, empleo o negocio</p>
+                        {{-- <h1 style="color: white">Bienvenido a nuestra Papeleria </h1>
+                        <p>Aquí encontrarás todo lo que necesitas para tu colegio, empleo o negocio</p> --}}
                      </div>
                   </div>
                </div>

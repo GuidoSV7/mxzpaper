@@ -8,6 +8,8 @@ Alpine.plugin(focus);
 
 Alpine.start();
 
+
+
 if (localStorage.dark == 1) {
     document.documentElement.classList.add('dark');
 } else {
